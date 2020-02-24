@@ -10,7 +10,7 @@ Module to extend functionalities of the System section
  
 </ul>  
 
-![alt text](https://raw.githubusercontent.com/rocketbot-cl/MongoDB/master/example/system.png)
+![alt text](https://github.com/rocketbot-cl/SystemPlus/blob/master/example/system.png)
 
 
 
