@@ -64,6 +64,13 @@ if module == "backup":
         PrintException()
         raise e
 
+if module == "cleanVars":
+
+    vars = GetParams('vars')
+    vars = vars.split(',')
+    for var in vars:
+        print(GetVar(var))
+        SetVar(var, '')
 
 
 
