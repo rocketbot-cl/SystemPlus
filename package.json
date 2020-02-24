@@ -69,7 +69,7 @@
         "options": null
       },
       "en": {
-        "title": "Set Variable",
+        "title": "Set Multiple Variable",
         "description": "Set multiple variables from an iterable object",
         "title_options": null,
         "options": null
