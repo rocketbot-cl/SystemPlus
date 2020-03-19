@@ -2,13 +2,12 @@
 
 Module to extend functionalities of the System section
 
-<ul>
-  <li>Export Variables</li>  
-  <li>Set Multiple Variables</li>
-  <li>Run Backup</li>
-  <li>Clean Vars</li>
+  - Export Variables 
+  - Set Multiple Variables
+  - Run Backup
+  - Clean Vars
  
-</ul>  
+  
 
 ![alt text](https://github.com/rocketbot-cl/SystemPlus/blob/master/example/system.png)
 
