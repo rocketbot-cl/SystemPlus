@@ -6,10 +6,11 @@ Module to extend functionalities of the System section
   - Set Multiple Variables
   - Run Backup
   - Clean Vars
+  - Random
  
   
 
-![alt text](https://github.com/rocketbot-cl/SystemPlus/blob/master/example/system.png)
+![System++](https://github.com/rocketbot-cl/SystemPlus/blob/master/example/system.png)
 
 
 

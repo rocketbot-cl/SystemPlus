@@ -25,7 +25,7 @@ Para instalar librerias se debe ingresar por terminal a la carpeta "libs"
 """
 
 import sys
-
+from random import *
 """
     Obtengo el modulo que fueron invocados
 """
@@ -52,6 +52,8 @@ if module == "setVariable":
         PrintException()
         raise e
 
+
+
 if module == "backup":
     try:
         try:
@@ -71,6 +73,24 @@ if module == "cleanVars":
     for var in vars:
         print(GetVar(var))
         SetVar(var, '')
+
+if module == "random":
+    option = GetParams('option')
+    value = GetParams('value')
+    result = GetParams('var')
+
+    try:
+        value = eval(value)
+        if option == "randint":
+            rand_number = eval(option)(value[0], value[1])
+        else:
+            rand_number = eval(option)(value)
+
+        if result:
+            SetVar(result, rand_number)
+    except Exception as e:
+        PrintException()
+        raise e
 
 
 
