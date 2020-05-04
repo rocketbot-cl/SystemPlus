@@ -74,7 +74,7 @@ if module == "cleanVars":
         print(GetVar(var))
         SetVar(var, '')
 
-if module == "random":
+if module == "random_":
     option = GetParams('option')
     value = GetParams('value')
     result = GetParams('var')
