@@ -7,6 +7,7 @@ Module to extend functionalities of the System section
   - Run Backup
   - Clean Vars
   - Random
+  - Foreground App
  
   
 
