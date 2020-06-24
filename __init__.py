@@ -92,7 +92,22 @@ if module == "random_":
         PrintException()
         raise e
 
+if module == "App_Foreground":
 
+    app_name = GetParams('app_name')
+
+    def set_window_to_foreground(title):
+        import win32gui
+        import win32con
+        handle = win32gui.FindWindow(None, title)
+        if not handle:
+            raise Exception('Could not find a window with title "{}"'.format(title))
+
+        win32gui.ShowWindow(handle, win32con.SW_SHOWMAXIMIZED)
+        win32gui.SetForegroundWindow(handle)
+
+
+    set_window_to_foreground(app_name)
 
 # if module == "import":
 #     path = GetParams("path")
