@@ -26,6 +26,7 @@ Para instalar librerias se debe ingresar por terminal a la carpeta "libs"
 
 import sys
 from random import *
+import win32gui
 """
     Obtengo el modulo que fueron invocados
 """
@@ -68,9 +69,13 @@ if module == "backup":
 
 if module == "cleanVars":
 
-    vars = GetParams('vars')
-    vars = vars.split(',')
-    for var in vars:
+    variables = GetParams('vars')
+    if not variables:
+        variables = [var["name"] for var in vars_]
+    else:
+        variables = variables.split(',')
+
+    for var in variables:
         print(GetVar(var))
         SetVar(var, '')
 
@@ -108,6 +113,28 @@ if module == "App_Foreground":
 
 
     set_window_to_foreground(app_name)
+
+
+if module == "GetHandle":
+    result = GetParams("var")
+
+    try:
+        handleInfo = []
+
+
+        def winEnumHandler(hwnd, ctx):
+            global handleInfo
+            if win32gui.IsWindowVisible(hwnd):
+                handleInfo.append((hwnd, win32gui.GetWindowText(hwnd)))
+
+
+        win32gui.EnumWindows(winEnumHandler, None)
+
+        SetVar(result, handleInfo)
+    except Exception as e:
+        print("\x1B[" + "31;40mError\u2193\x1B[" + "0m")
+        PrintException()
+        raise e
 
 # if module == "import":
 #     path = GetParams("path")
