@@ -2,12 +2,17 @@
 
 Module to extend functionalities of the System section
 
-  - Export Variables 
-  - Set Multiple Variables
-  - Run Backup
-  - Clean Vars
-  - Random
-  - Foreground App
+## Commands
+
+<ul>
+  <li>Export Variables </li>
+  <li>Set Multiple Variables</li>
+  <li>Run Backup</li>
+  <li>Clean Vars</li>
+  <li>Random</li>
+  <li>Foreground App</li>
+  <li>Get Handle from Open windows</li>
+</ul>
  
   
 
