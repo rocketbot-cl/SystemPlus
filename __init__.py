@@ -116,6 +116,7 @@ if module == "App_Foreground":
 
 
 if module == "GetHandle":
+    import win32gui
     result = GetParams("var")
 
     try:
