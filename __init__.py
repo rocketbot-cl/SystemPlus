@@ -26,7 +26,7 @@ Para instalar librerias se debe ingresar por terminal a la carpeta "libs"
 
 import sys
 from random import *
-import win32gui
+
 """
     Obtengo el modulo que fueron invocados
 """
@@ -52,7 +52,6 @@ if module == "setVariable":
     except Exception as e:
         PrintException()
         raise e
-
 
 
 if module == "backup":
@@ -99,6 +98,7 @@ if module == "random_":
 
 if module == "App_Foreground":
 
+    import win32gui
     app_name = GetParams('app_name')
 
     def set_window_to_foreground(title):
