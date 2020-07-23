@@ -124,7 +124,7 @@ if module == "GetHandle":
 
 
         def winEnumHandler(hwnd, ctx):
-            global handleInfo
+            global handleInfo, win32gui
             if win32gui.IsWindowVisible(hwnd):
                 handleInfo.append((hwnd, win32gui.GetWindowText(hwnd)))
 
