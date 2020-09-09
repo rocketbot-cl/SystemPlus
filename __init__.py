@@ -26,11 +26,13 @@ Para instalar librerias se debe ingresar por terminal a la carpeta "libs"
 
 import sys
 from random import *
+import time
 
 """
     Obtengo el modulo que fueron invocados
 """
-
+ProcessTime = time.perf_counter  #this returns nearly 0 when first call it if python version <= 3.6
+ProcessTime()
 module = GetParams("module")
 
 if module == "export":
@@ -136,6 +138,12 @@ if module == "GetHandle":
         print("\x1B[" + "31;40mError\u2193\x1B[" + "0m")
         PrintException()
         raise e
+
+if module == "timer":
+    var_ = GetParams("var")
+    process_time = ProcessTime()
+    SetVar(var_, int(process_time))
+
 
 # if module == "import":
 #     path = GetParams("path")
