@@ -107,6 +107,7 @@ if module == "App_Foreground":
         def set_window_to_foreground(title):
             import win32gui
             import win32con
+            import win32com
             try:
                 handle = win32gui.FindWindow(None, title)
                 if not handle:
