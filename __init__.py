@@ -100,22 +100,31 @@ if module == "random_":
 
 if module == "App_Foreground":
 
-    import win32gui
-    app_name = GetParams('app_name')
-
-    def set_window_to_foreground(title):
+    try:
         import win32gui
-        import win32con
-        handle = win32gui.FindWindow(None, title)
-        if not handle:
-            raise Exception('Could not find a window with title "{}"'.format(title))
+        app_name = GetParams('app_name')
 
-        win32gui.ShowWindow(handle, win32con.SW_SHOWMAXIMIZED)
-        win32gui.SetForegroundWindow(handle)
+        def set_window_to_foreground(title):
+            import win32gui
+            import win32con
+            try:
+                handle = win32gui.FindWindow(None, title)
+                if not handle:
+                    raise Exception('Could not find a window with title "{}"'.format(title))
+
+                win32gui.ShowWindow(handle, win32con.SW_SHOWMAXIMIZED)
+                shell = win32com.client.Dispatch("WScript.Shell")
+                shell.SendKeys('%')
+                win32gui.SetForegroundWindow(handle)
+            except Exception as ex:
+                raise ex
 
 
-    set_window_to_foreground(app_name)
-
+        set_window_to_foreground(app_name)
+    except Exception as e:
+        print("\x1B[" + "31;40mAn error occurred\u2193\x1B[" + "0m")
+        PrintException()
+        raise e
 
 if module == "GetHandle":
     import win32gui
