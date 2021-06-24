@@ -77,7 +77,6 @@ if module == "cleanVars":
         variables = variables.split(',')
 
     for var in variables:
-        print(GetVar(var))
         SetVar(var, '')
 
 if module == "random_":
