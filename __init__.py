@@ -35,56 +35,56 @@ ProcessTime = time.perf_counter  #this returns nearly 0 when first call it if py
 ProcessTime()
 module = GetParams("module")
 
-if module == "export":
-    path = GetParams("path")
+try:
+    if module == "export":
+        path = GetParams("path")
 
-    with open(path, 'w') as f:
-        f.write(str(vars_))
+        with open(path, 'w') as f:
+            f.write(str(vars_))
 
-if module == "setVariable":
-    data = GetParams("data")
-    variables = GetParams("vars")
+    if module == "setVariable":
+        data = GetParams("data")
+        variables = GetParams("vars")
 
-    try:
-        data = eval(data)
-        variables =  variables.split(",")
-
-        for i, var in enumerate(variables):
-            SetVar(var, data[i])
-    except Exception as e:
-        PrintException()
-        raise e
-
-
-if module == "backup":
-    try:
         try:
-            os.mkdir("Logs")
-        except:
-            pass
-        name = "Logs/app_{}.log".format(datetime.now()).replace(":", ".")
-        os.rename("app.log", name)
-    except Exception as e:
-        PrintException()
-        raise e
+            data = eval(data)
+            variables =  variables.split(",")
 
-if module == "cleanVars":
+            for i, var in enumerate(variables):
+                SetVar(var, data[i])
+        except Exception as e:
+            PrintException()
+            raise e
 
-    variables = GetParams('vars')
-    if not variables:
-        variables = [var["name"] for var in vars_]
-    else:
-        variables = variables.split(',')
 
-    for var in variables:
-        SetVar(var, '')
+    if module == "backup":
+        try:
+            try:
+                os.mkdir("Logs")
+            except:
+                pass
+            name = "Logs/app_{}.log".format(datetime.now()).replace(":", ".")
+            os.rename("app.log", name)
+        except Exception as e:
+            PrintException()
+            raise e
 
-if module == "random_":
-    option = GetParams('option')
-    value = GetParams('value')
-    result = GetParams('var')
+    if module == "cleanVars":
 
-    try:
+        variables = GetParams('vars')
+        if not variables:
+            variables = [var["name"] for var in vars_]
+        else:
+            variables = variables.split(',')
+
+        for var in variables:
+            SetVar(var, '')
+
+    if module == "random_":
+        option = GetParams('option')
+        value = GetParams('value')
+        result = GetParams('var')
+
         value = eval(value)
         if option == "randint":
             rand_number = eval(option)(value[0], value[1])
@@ -93,13 +93,9 @@ if module == "random_":
 
         if result:
             SetVar(result, rand_number)
-    except Exception as e:
-        PrintException()
-        raise e
 
-if module == "App_Foreground":
+    if module == "App_Foreground":
 
-    try:
         import win32gui
         app_name = GetParams('app_name')
 
@@ -120,17 +116,13 @@ if module == "App_Foreground":
                 raise ex
 
 
-        set_window_to_foreground(app_name)
-    except Exception as e:
-        print("\x1B[" + "31;40mAn error occurred\u2193\x1B[" + "0m")
-        PrintException()
-        raise e
+            set_window_to_foreground(app_name)
 
-if module == "GetHandle":
-    import win32gui
-    result = GetParams("var")
+    if module == "GetHandle":
+        import win32gui
+        result = GetParams("var")
 
-    try:
+        
         handleInfo = []
 
 
@@ -143,17 +135,41 @@ if module == "GetHandle":
         win32gui.EnumWindows(winEnumHandler, None)
 
         SetVar(result, handleInfo)
-    except Exception as e:
-        print("\x1B[" + "31;40mError\u2193\x1B[" + "0m")
-        PrintException()
-        raise e
-
-if module == "timer":
-    var_ = GetParams("var")
-    process_time = ProcessTime()
-    SetVar(var_, int(process_time))
 
 
+    if module == "timer":
+        var_ = GetParams("var")
+        process_time = ProcessTime()
+        SetVar(var_, int(process_time))
+
+    if (module == "getArguments"):
+        try:
+            argumentsNeeded = eval(GetParams("argumentsNeeded"))
+        except:
+            argumentsNeeded = ""
+        whereToStore = GetParams("whereToStore")
+
+        arguments = sys.argv
+        arguments = arguments[1:]
+        argDic = {}
+        for each in arguments:
+            realEach = each.split("=")
+            if (len(realEach) == 2):
+                argDic[f"{realEach[0]}"] = realEach[1]
+
+
+        if (len(argumentsNeeded) == 0):
+            SetVar(whereToStore, argDic)
+        else:
+            realArg = {}
+            for each in argumentsNeeded:
+                realArg[f"{each}"] = argDic[f"{each}"]
+            SetVar(whereToStore, realArg)
+
+except Exception as e:
+    print("\x1B[" + "31;40mError\u2193\x1B[" + "0m")
+    PrintException()
+    raise e
 # if module == "import":
 #     path = GetParams("path")
 
