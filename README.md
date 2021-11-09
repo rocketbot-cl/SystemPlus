@@ -1,29 +1,62 @@
-# SystemPlus
 
-Module to extend functionalities of the System section
 
-## Commands
 
-<ul>
-  <li>Export Variables </li>
-  <li>Set Multiple Variables</li>
-  <li>Run Backup</li>
-  <li>Clean Vars</li>
-  <li>Random</li>
-  <li>Foreground App</li>
-  <li>Get Handle from Open windows</li>
-</ul>
- 
+
+# System++
   
+Módulo para exportar tus variables a un archivo .txt,  interactuar con Rocketbot, variables, librerias, Windows y mas!
 
-![System++](https://github.com/rocketbot-cl/SystemPlus/blob/master/example/system.png)
+## How to install this module
+  
+__Download__ and __install__ the content in 'modules' folder in Rocketbot path
+
+## Overview
 
 
+1. Export variables to a file  
+Export all Rocketbot variables to a text file
 
-<h2>License</h2>
+2. Set Multiple Variable  
+Set multiple variables from an iterable object
 
-<p><a href="http://badges.mit-license.org" rel="nofollow"><img src="https://camo.githubusercontent.com/107590fac8cbd65071396bb4d04040f76cde5bde/687474703a2f2f696d672e736869656c64732e696f2f3a6c6963656e73652d6d69742d626c75652e7376673f7374796c653d666c61742d737175617265" alt="License" data-canonical-src="http://img.shields.io/:license-mit-blue.svg?style=flat-square" style="max-width:100%;"></a></p>
+3. Run Backup  
+With this command you can clean the app.log file and make a backup.
 
-<ul>
-  <li><strong><a href="http://opensource.org/licenses/mit-license.php" rel="nofollow">MIT license</a></strong></li>
-</ul>  
+4. Clean var(s)  
+Enter the variables to be cleaned separated by a comma
+
+5. Random  
+Use random library
+
+6. Foreground App  
+With this command you can bring an application to the foreground.
+
+7. Get Handle from Open windows  
+Return and array with name and handle tuple from Open Window
+
+8. Timer  
+Get time number
+
+9. Get Arguments  
+Gets the arguments that were passed when Rocketbot started.
+
+10. Launch robot  
+With this command you can launch a robot specifying its name and, in case it is an external db, indicating the path to 
+that db.
+### Updates
+
+
+----
+### OS
+
+- windows
+- mac
+- linux
+- docker
+
+### Dependencies
+
+### License
+  
+![MIT](https://camo.githubusercontent.com/107590fac8cbd65071396bb4d04040f76cde5bde/687474703a2f2f696d672e736869656c64732e696f2f3a6c6963656e73652d6d69742d626c75652e7376673f7374796c653d666c61742d737175617265)  
+[MIT](http://opensource.org/licenses/mit-license.ph)
