@@ -165,21 +165,22 @@ try:
             for each in argumentsNeeded:
                 realArg[f"{each}"] = argDic[f"{each}"]
             SetVar(whereToStore, realArg)
+    
+    if module == "launch_robot":
+        rocketbot_path = tmp_global_obj["basepath"] + "/rocketbot.exe"
+        robot_name = GetParams("robot_name")
+        path_db = GetParams("path_db")
+        external_db = GetParams("external_db")
+        res = GetParams("res")
+
+        from subprocess import Popen, CREATE_NEW_CONSOLE
+        if external_db:
+            p = Popen([rocketbot_path, "-start={robot_name}".format(robot_name=robot_name), "-db={path_db}"], creationflags=CREATE_NEW_CONSOLE)    
+        else:
+            p = Popen([rocketbot_path, "-start={robot_name}".format(robot_name=robot_name)], creationflags=CREATE_NEW_CONSOLE)
+        p.communicate()
 
 except Exception as e:
     print("\x1B[" + "31;40mError\u2193\x1B[" + "0m")
     PrintException()
     raise e
-# if module == "import":
-#     path = GetParams("path")
-
-#     with open(path, 'r') as f:
-#         var = f.read()
-#         variables = eval(var)
-
-#     for v in variables:
-#         v.pop('$$hashKey')
-    
-
-#     vars_ = variables
-#     print(vars_)
