@@ -4,7 +4,7 @@
 
 # System++
   
-Módulo para exportar tus variables a un archivo .txt  
+Módulo para trabajar con funcionalidades del sistema y de Rocketbot, tales como exportar variables, obtener las ventanas abiertas y más!
   
 ![banner](https://i.imgur.com/YxnrHRy.jpg)
 ## Como instalar este módulo
